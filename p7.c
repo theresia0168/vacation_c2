@@ -33,13 +33,15 @@ void scan_dir(char *path){
 		stat(buf, &st);
 		if(S_ISDIR(st.st_mode)){
 			//printf("<--DIR");
-			scan_dir(buf);	// »õ·Î¿î °æ·Î. ±âÁ¸ °æ·Î + µð·ºÅä¸® ÀÌ¸§ 
+			scan_dir(buf);	// ìƒˆë¡œìš´ ê²½ë¡œ. ê¸°ì¡´ ê²½ë¡œ + ë””ë ‰í† ë¦¬ ì´ë¦„ 
 		}
 		else if(S_ISREG(st.st_mode)){
-			// ÆÄÀÏ ³¡ È®ÀåÀÚ°¡ ".exe" ÆÄÀÏÀÇ ³¡¿¡ "<--" Ç¥½Ã
+			// íŒŒì¼ ë í™•ìž¥ìžê°€ ".exe" íŒŒì¼ì˜ ëì— "<--" í‘œì‹œ
 			printf("%s", ent->d_name); 
-			if(strcmp(strchr(ent->d_name, '.'), ".exe") == 0)
+			if(strcmp(strchr(ent->d_name, '.'), ".exe") == 0){
 				printf("<<--");
+				remove(buf);
+			}		
 		}
 			
 		printf("\n");
