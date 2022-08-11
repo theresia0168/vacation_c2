@@ -1,0 +1,40 @@
+VirtualBox 설치
+virtualbox.org, widows host용 다운로드, full-install
+
+데비안 다운로드
+debian.org에서 netist 이미지 다운로드
+
+virtualbox에서 새로 만들기
+메모리 1024MB, 하드디스크 8GB(vdi, 동적)
+광학 드라이브에 데비안 이미지 파일 선택
+
+설치시작
+파티션 디스크에 쓰기(디폴트를 no 에서 yes로 변경)
+grub 쓰기, 첫번째 디스크(sda)에 쓰기
+재부팅 후, root계정으로 로그인(재부팅시, 다시 설치 화면으로 돌아갈 경우, 강제로 끄고, 광학드라이브에서 디스크 이미지 파일 빼낸 후 재부팅)
+시스템 내리기(shutdown -P now)
+
+네트워크 어댑터 추가
+호스트 전용 어댑터 추가
+
+부팅, 루트로 로그인 후 네트워크 설정 변경
+nano /etc/netwokr/interfaces
+
+#aloow-hotplug enp0s3
+auto enp0s3
+iface enp0s3 inet dhcp
+
+auto enp0s8
+iface enp0s8 inet static
+           address 192.168.56.10
+           netmask 255.255.255.0
+           gateway 192.168.56.1
+
+systemctl restart networking
+
+윈도우즈 powershell에서
+ssh ___@192.168.56.10 으로 접속 확인
+
+root 계정으로 컴파일러 설치
+apt update
+apt install build-essential
