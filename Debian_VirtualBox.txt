@@ -38,3 +38,4 @@ ssh ___@192.168.56.10 으로 접속 확인
 root 계정으로 컴파일러 설치
 apt update
 apt install build-essential
+apt install libcurl4-openssl-dev
