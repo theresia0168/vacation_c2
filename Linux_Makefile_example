@@ -1,0 +1,10 @@
+PROG_NAME=curltest
+SRC_FILES=main.c
+LIBS = curl
+LD_FLAGS=-lcurl
+
+${PROG_NAME}: ${SRC_FILES}
+        gcc -o ${PROG_NAME} ${SRC_FILES} ${LD_FLAGS}
+
+clean:
+        rm ${PROG_NAME}
