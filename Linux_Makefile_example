@@ -1,6 +1,6 @@
 PROG_NAME=curltest
 SRC_FILES=main.c
-LIBS = curl
+//LIBS = curl
 LD_FLAGS=-lcurl
 
 ${PROG_NAME}: ${SRC_FILES}
